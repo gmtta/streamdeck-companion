@@ -25,6 +25,7 @@
   "productName": "Stream Deck Companion",
   "icon": "icon",
   "files": ["main.js", "index.html", "tta_logo.png", "package.json"],
+  "compression": "store",
   "directories": {
     "output": "dist"
   },
@@ -36,3 +37,4 @@
   }
 } 
 }
+
