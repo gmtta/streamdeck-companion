@@ -26,6 +26,7 @@
   "icon": "icon",
   "files": ["main.js", "index.html", "tta_logo.png", "package.json"],
   "compression": "store",
+  "publish": null,
   "directories": {
     "output": "dist"
   },
@@ -37,4 +38,5 @@
   }
 } 
 }
+
 
