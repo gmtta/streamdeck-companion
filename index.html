@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stream Deck Companion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Open Sans Condensed', sans-serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 15px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .logo-container {
+            margin-bottom: 5px;
+        }
+        .logo {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 8px;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+        p {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: #b0b0b0;
+        }
+       /* #log {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-size: 14px;
+            color: #c0c0c0;
+            max-width: 600px;
+            width: 100%;
+            text-align: left;
+            backdrop-filter: blur(10px);
+            flex: 1;
+            overflow-y: auto;
+            max-height: 200px;
+        }
+        #log br {
+            line-height: 1.6;
+        }*/
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="tta_logo.png" alt="TTA Logo" class="logo">
+    </div>
+    
+    <h2>Stream Deck Companion</h2>
+    <p>HTTP server running on port 3001</p>
+    
+<!--  <button onclick="testSound('34')">Test Sound 34 (Tribal)</button>
+    <button onclick="testSound('16')">Test Sound 16 (Screams)</button>
+    <button onclick="testStopAll()">Test Stop All</button> 
+    
+   <div id="log">
+        Click buttons to test...<br>
+    </div>  -->
+    
+    <script>
+        const { ipcRenderer } = require('electron');
+        
+        function testSound(id) {
+            console.log('UI: Button clicked for sound:', id);
+            
+            // Send message to main process
+            ipcRenderer.send('test-sound', id);
+            
+            // Show feedback in the UI
+            const log = document.getElementById('log');
+            //log.innerHTML += `UI: Clicked test sound ${id} at ${new Date().toLocaleTimeString()}<br>`;
+        }
+        
+        function testStopAll() {
+            console.log('UI: Stop all clicked');
+            ipcRenderer.send('test-stopall');
+            
+            const log = document.getElementById('log');
+            //log.innerHTML += `UI: Clicked stop all at ${new Date().toLocaleTimeString()}<br>`;
+        }
+        
+        // Listen for responses from main process
+        ipcRenderer.on('command-queued', (event, data) => {
+            const log = document.getElementById('log');
+            //log.innerHTML += `MAIN: Command queued - ${JSON.stringify(data)}<br>`;
+        });
+    </script>
+</body>
+</html>

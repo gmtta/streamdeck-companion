@@ -1,0 +1,38 @@
+{
+  "name": "streamdeck-companion",
+  "version": "1.0.0",
+  "description": "Stream Deck integration for Tabletop Audio Custom SoundPad",
+  "author": "Tabletop Audio",
+  "homepage": "https://tabletopaudio.com",
+  "license": "MIT",
+  "main": "main.js",
+  "scripts": {
+  "start": "electron .",
+  "build": "electron-builder",
+  "build:win": "electron-builder --win", 
+  "build:mac": "electron-builder --mac",
+  "dist": "electron-builder --publish=never"
+},
+  "dependencies": {
+  "ws": "^8.0.0"
+  },
+  "devDependencies": {
+    "electron": "^22.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+  "appId": "com.tabletopaudio.streamdeck-companion",
+  "productName": "Stream Deck Companion",
+  "icon": "icon",
+  "files": ["main.js", "index.html", "tta_logo.png", "package.json"],
+  "directories": {
+    "output": "dist"
+  },
+  "win": {
+    "target": [{"target": "nsis", "arch": ["x64"]}]
+  },
+  "mac": {
+    "target": [{"target": "dmg", "arch": ["x64", "arm64"]}]
+  }
+} 
+}
