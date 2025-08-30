@@ -10,6 +10,7 @@ on:
 jobs:
   build:
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
     
     strategy:
       matrix:
@@ -23,12 +24,17 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '20'
+        cache: 'npm'
         
     - name: Install dependencies
-      run: npm install
+      run: npm ci
+      env:
+        ELECTRON_CACHE: ~/.cache/electron
+        ELECTRON_BUILDER_CACHE: ~/.cache/electron-builder
       
     - name: Build app
       run: npm run build
+      timeout-minutes: 15
       
     - name: Upload Windows artifacts
       if: matrix.os == 'windows-latest'
@@ -37,7 +43,6 @@ jobs:
         name: windows-build
         path: |
           dist/*.exe
-          dist/*.exe.blockmap
           
     - name: Upload macOS artifacts  
       if: matrix.os == 'macos-latest'
@@ -46,4 +51,3 @@ jobs:
         name: macos-build
         path: |
           dist/*.dmg
-          dist/*.dmg.blockmap
