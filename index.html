@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tabletop Audio:Stream Deck Companion</title>
+    <title>Tabletop Audio: Stream Deck Companion</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -44,6 +44,30 @@
             margin-bottom: 15px;
             color: #b0b0b0;
         }
+        .helper-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+        }
+        .helper-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+            background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+        }
+        .helper-button:active {
+            transform: translateY(0);
+        }
        /* #log {
             margin-top: 20px;
             padding: 15px;
@@ -74,6 +98,8 @@
     <h2>Stream Deck Companion</h2>
     <p>HTTP server running on port 3001</p>
     
+    <button class="helper-button" onclick="openHelper()">Open Stream Deck Helper on TabletopAudio.com</button>
+    
 <!--  <button onclick="testSound('34')">Test Sound 34 (Tribal)</button>
     <button onclick="testSound('16')">Test Sound 16 (Screams)</button>
     <button onclick="testStopAll()">Test Stop All</button> 
@@ -84,6 +110,11 @@
     
     <script>
         const { ipcRenderer } = require('electron');
+        
+        function openHelper() {
+            console.log('UI: Opening Stream Deck helper page');
+            ipcRenderer.send('open-helper');
+        }
         
         function testSound(id) {
             console.log('UI: Button clicked for sound:', id);
@@ -111,5 +142,4 @@
         });
     </script>
 </body>
-
 </html>
