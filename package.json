@@ -23,7 +23,7 @@
   "build": {
   "appId": "com.tabletopaudio.streamdeck-companion",
   "productName": "Tabletop Audio - Stream Deck Companion",
-  "files": ["main.js", "index.html", "tta_logo.png", "package.json", "!icon.*'],
+  "files": ["main.js", "index.html", "tta_logo.png", "package.json", "!icon.*"],
   "compression": "store",
   "publish": null,
   "directories": {
@@ -42,6 +42,7 @@
   }
 }
 }
+
 
 
 
