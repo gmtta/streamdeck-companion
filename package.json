@@ -21,23 +21,28 @@
     "electron-builder": "^26.0.12"
   },
   "build": {
-  "appId": "com.tabletopaudio.streamdeck-companion",
-  "productName": "Tabletop Audio - Stream Deck Companion",
-  "icon": "icon",
-  "files": ["main.js", "index.html", "tta_logo.png", "package.json"],
-  "compression": "store",
-  "publish": null,
-  "directories": {
-    "output": "dist"
-  },
-  "win": {
-    "target": [{"target": "nsis", "arch": ["x64"]}]
-  },
-  "mac": {
-    "target": [{"target": "dmg", "arch": ["x64", "arm64"]}]
-  }
-} 
+    "appId": "com.tabletopaudio.streamdeck-companion",
+    "productName": "Tabletop Audio - Stream Deck Companion",
+    "icon": "icon",
+    "files": ["main.js", "index.html", "tta_logo.png", "package.json"],
+    "compression": "store",
+    "publish": null,
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [{"target": "nsis", "arch": ["x64"]}]
+    },
+    "mac": {
+      "target": [{"target": "dmg", "arch": ["x64", "arm64"]}]
+    },
+    "linux": {
+      "target": [{"target": "AppImage", "arch": ["x64"]}]
+    }
+  } 
 }
+
+
 
 
 
