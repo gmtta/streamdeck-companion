@@ -38,10 +38,12 @@
     "target": [{"target": "dmg", "arch": ["x64", "arm64"]}]
   },
   "linux": {
+     "icon": "icon.png",
     "target": [{"target": "AppImage", "arch": ["x64"]}]
   }
 }
 }
+
 
 
 
