@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, shell } = require('electron');
 const http = require('http');
 const url = require('url');
 
@@ -20,7 +20,7 @@ let pendingCommands = [];
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 400,
-    height: 300,
+    height: 350,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
@@ -126,6 +126,12 @@ function startHttpServer() {
     console.log('HTTP server running on http://localhost:3001');
   });
 }
+
+// Handler for opening the helper page
+ipcMain.on('open-helper', (event) => {
+  console.log('MAIN: Opening Stream Deck helper page');
+  shell.openExternal('https://tabletopaudio.com/sd_helper.html');
+});
 
 ipcMain.on('test-sound', (event, soundId) => {
   console.log('MAIN: Received test-sound for ID:', soundId);
